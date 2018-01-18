@@ -1,0 +1,1 @@
+Getting Drools rules data. See the "Main.java" file.
