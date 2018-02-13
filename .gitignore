@@ -1,0 +1,14 @@
+# eclipse project file
+.settings/
+.classpath
+.project
+
+
+# OS
+.DS_Store
+
+# Misc
+*.swp
+release.properties
+pom.xml.releaseBackup
+pom.xml.tag

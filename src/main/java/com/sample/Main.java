@@ -35,7 +35,7 @@ public class Main {
 		KieContainer kc = kieServices.newKieClasspathContainer();
 		KieSession kSession = kc.newKieSession("ksession-rules");
 		
-		/* List the KieBase names. Web get the package "rules"
+		/* List the KieBase names. We get the package "rules"
 		 * (we have "rules" in our resources folder 
 		 */
 		System.out.println(kc.getKieBaseNames().toString());
@@ -67,6 +67,7 @@ public class Main {
     		
     		/* Get the Left Hand Side (LHS) of the "Hello world" rule */
     		System.out.println("LHS: " + concreteRule.getLhs());
+    
     	
     		/* Now, we want to get other information like java Objects that the rule is using
     		 * and variables (identifiers). Also , web want the constraints ("status == Message.HELLO")
