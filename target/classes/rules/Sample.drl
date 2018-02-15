@@ -2,9 +2,13 @@ package com.sample
  
 import com.sample.DroolsTest.Message;
  
+
 rule "Hello World"
+	@author("Alejandro")
+	@metadato_propio("Section 103 RTA 1988")
+	salience 42
     when
-        m : Message( status == Message.HELLO, myMessage : message )
+        m : Message(true==true, status == Message.HELLO, myMessage : message )
     then
         System.out.println( myMessage );
         m.setMessage( "Goodbye cruel world" );

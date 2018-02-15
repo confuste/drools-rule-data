@@ -3,6 +3,7 @@ package com.sample;
 import java.io.File;
 
 import org.drools.core.definitions.rule.impl.RuleImpl;
+import org.drools.core.rule.GroupElement;
 import org.drools.core.rule.Pattern;
 import org.drools.core.spi.Consequence;
 import org.kie.api.KieBase;
@@ -53,9 +54,12 @@ public class Main {
     		for ( KiePackage kp : kieBase.getKiePackages() ) {
 		
     			for (Rule rule : kp.getRules()) {
-    				System.out.println("Rule name ->" + rule.getName());;
+    				System.out.println("Rule name ->" + rule.getName());
     				//KnowledgeType know = rule.getKnowledgeType();
     				//System.out.println(know);
+    				
+    				//Get Metadata information
+    				System.out.println("Rule <" +rule.getName() + "> has the next metadata: "+ rule.getMetaData() );
     			}
     		}
     	
@@ -67,16 +71,20 @@ public class Main {
     		
     		/* Get the Left Hand Side (LHS) of the "Hello world" rule */
     		System.out.println("LHS: " + concreteRule.getLhs());
-    
+    		GroupElement groupElement = concreteRule.getLhs();
+    		System.out.println("LHS GroupElement: " + groupElement.getNestedElements().toString());
+    		System.out.println("LHS GroupElement outerDeclarations: " + groupElement.getOuterDeclarations().get("m"));
+    		//System.out.println("LHS GroupElement 0: " + groupElement.getNestedElements().get(0));
+    	
     	
     		/* Now, we want to get other information like java Objects that the rule is using
     		 * and variables (identifiers). Also , web want the constraints ("status == Message.HELLO")
     		 */
     		Pattern rce = (Pattern) concreteRule.getLhs().getChildren().get( 0 );   
     		//System.out.println(oneRule.getLhs().getChildren().get( 0 ).getOuterDeclarations().toString());
-    		System.out.println(rce);
+    		System.out.println("Rce: " + rce);
     		System.out.println("LHS constraints: " + rce.getConstraints());
-    	
+    		
     		
     		//Consequence cons = concreteRule.getConsequence();
     		//System.out.println(cons.getName());
